@@ -6,6 +6,11 @@
   "repository": "https://github.com/tricknotes/FirebaseAuthenticationGoogleAppsScript",
   "author": "Ryunosuke Sato <tricknotes.rs@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "setup": "npx clasp create --type standalone --rootDir src",
+    "deploy": "npx clasp push",
+    "test": "npx clasp run test 2>&1 | bin/parse-clasp-run-status"
+  },
   "devDependencies": {
     "@google/clasp": "^2.3.0",
     "@types/google-apps-script": "^1.0.14"

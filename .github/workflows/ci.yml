@@ -23,7 +23,7 @@ jobs:
           echo '${{ secrets.HOME_CLASPRC_JSON }}' > $HOME/.clasprc.json
       - name: Deploy to GAS (test environment)
         run: |
-          npx clasp push
+          yarn run deploy
       - name: Run test
         run: |
-          npx clasp run test 2>&1 | bin/parse-clasp-run-status
+          yarn run test
