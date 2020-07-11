@@ -2,6 +2,9 @@
   "timeZone": "Asia/Tokyo",
   "dependencies": {
   },
+  "executionApi": {
+    "access": "ANYONE"
+  },
   "exceptionLogging": "STACKDRIVER",
   "runtimeVersion": "V8"
 }
