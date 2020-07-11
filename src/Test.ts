@@ -1,8 +1,6 @@
-function test() {
-  return Test.run();
-}
+import GSUnit from 'GSUnit';
 
-class TestRunner {
+export class TestRunner {
   static run() {
     return (new this).run();
   }
@@ -20,7 +18,7 @@ class TestRunner {
       }
 
       try {
-        this[method]();
+        this[method as keyof TestRunner]();
         success.push([method]);
       } catch (e) {
         failed.push([method, e]);
@@ -47,7 +45,11 @@ class TestRunner {
   }
 }
 
-class Test extends TestRunner {
+export function test() {
+  return Test.run();
+}
+
+export class Test extends TestRunner {
   ['It should be ok.']() {
     GSUnit.assert(true);
   }

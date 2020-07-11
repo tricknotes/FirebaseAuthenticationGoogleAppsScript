@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "rootDir": "./src",
+    "alwaysStrict": true,
+    "baseUrl": "./",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "types": ["google-apps-script"]
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
+}
