@@ -26,4 +26,4 @@ jobs:
           npx clasp push
       - name: Run test
         run: |
-          npx clasp run test
+          npx clasp run test 2>&1 | bin/parse-clasp-run-status

@@ -1,0 +1,11 @@
+#!/bin/bash -eu
+
+# To handle an error from `clasp run`. https://github.com/google/clasp/issues/788
+
+message="$(cat -)"
+
+echo $message
+
+if $(echo $message | grep "Exception: " > /dev/null 2>&1); then
+  exit 1
+fi
