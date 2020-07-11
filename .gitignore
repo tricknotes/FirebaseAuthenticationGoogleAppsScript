@@ -2,3 +2,4 @@
 /yarn.lock
 /.clasprc.json
 /.clasp.json
+*.code-workspace
