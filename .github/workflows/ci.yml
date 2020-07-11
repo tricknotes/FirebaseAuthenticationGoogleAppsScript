@@ -1,0 +1,29 @@
+name: CI
+on:
+  - push
+  - pull_request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: install
+      - name: Setup authentication
+        run: |
+          echo '${{ secrets.CLASP_JSON }}' > $GITHUB_WORKSPACE/.clasp.json
+          echo '${{ secrets.CLASPRC_JSON }}' > $GITHUB_WORKSPACE/.clasprc.json
+          echo '${{ secrets.HOME_CLASPRC_JSON }}' > $HOME/.clasprc.json
+      - name: Deploy to GAS (test environment)
+        run: |
+          npx clasp push
+      - name: Run test
+        run: |
+          npx clasp run test
