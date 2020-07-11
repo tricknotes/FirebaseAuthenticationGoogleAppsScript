@@ -1,6 +1,12 @@
 {
   "timeZone": "Asia/Tokyo",
   "dependencies": {
+    "libraries": [{
+      "userSymbol": "GSUnit",
+      "libraryId": "1iwQiK1ZO_StxLmMwbajG58exetEZt_DfCrd_lPF20o74lvVg3OXj_iEw",
+      "version": "1",
+      "developmentMode": true
+    }]
   },
   "executionApi": {
     "access": "ANYONE"
