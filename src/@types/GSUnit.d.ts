@@ -1,13 +1,13 @@
 // Ref: https://sites.google.com/site/nnillixxsource/Ferreira/GSUnit
 declare module 'GSUnit' {
   namespace GSUnit {
-    export function assert(value: unknown): void;
-    export function assert(comment: string, value: unknown): void;
+    export function assert(value: boolean): void;
+    export function assert(comment: string, value: boolean): void;
 
     export function assertArrayEquals(expected: unknown[], actual: unknown[]): void;
     export function assertArrayEquals(comment: string, expected: unknown[], actual: unknown[]): void;
 
-    export function assertArrayEqualsIgnoringOrder(expected: unknown[], actual: []): void;
+    export function assertArrayEqualsIgnoringOrder(expected: unknown[], actual: unknown[]): void;
     export function assertArrayEqualsIgnoringOrder(comment: string, expected: unknown[], actual: []): void;
 
     export function assertContains(value: unknown, collection: unknown[]): void;
