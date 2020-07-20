@@ -1,2 +1,2 @@
 @types/**/*.ts
-Test.ts
+tests/*

@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "setup": "npx clasp create --type standalone --rootDir src",
-    "deploy": "npx clasp push --force",
+    "deploy": "bin/setup-config && npx clasp push --force",
     "deploy:production": "cp .claspignore{.production,} && npx clasp push --force && git checkout .claspignore",
     "test": "npx clasp run test 2>&1 | bin/parse-clasp-run-status"
   },
