@@ -1,5 +1,5 @@
 import GSUnit from 'GSUnit';
-import { FirebaseAuthentication } from './FirebaseAuthentication';
+import { getAuth } from './FirebaseAuthentication';
 
 export class TestRunner {
   static run() {
@@ -67,7 +67,7 @@ export function test() {
 }
 
 export class Test extends TestRunner {
-  public auth = FirebaseAuthentication.getAuth(
+  public auth = getAuth(
     PropertiesService.getScriptProperties().getProperty('email')!,
     PropertiesService.getScriptProperties().getProperty('private_key')!.replace(/\\n/g, '\n'), // Unescape newline.
     PropertiesService.getScriptProperties().getProperty('project_id')!,
