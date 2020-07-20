@@ -4,7 +4,7 @@ type User = {
 };
 
 export class FirebaseAuthentication {
-  #accessToken: string;
+  private _accessToken: string;
 
   static getAuth(email: string, key: string, projectId: string) {
     return new FirebaseAuthentication(email, key, projectId);
@@ -84,10 +84,10 @@ export class FirebaseAuthentication {
   private get accessToken() {
     // This access token will expire after 1 hour later, but GAS will terminate 30 min for Google limitation.
     // Therefore, we don't care refresh it.
-    if (!this.#accessToken) {
-      this.#accessToken = this.getAccessToken();
+    if (!this._accessToken) {
+      this._accessToken = this.getAccessToken();
     }
-    return this.#accessToken;
+    return this._accessToken;
   }
 
   private getAccessToken() {
@@ -143,6 +143,6 @@ export class FirebaseAuthentication {
   }
 }
 
-export const getAuth = (email: string, key: string, projectId: string) => {
+export function getAuth (email: string, key: string, projectId: string) {
   return FirebaseAuthentication.getAuth(email, key, projectId);
 }
