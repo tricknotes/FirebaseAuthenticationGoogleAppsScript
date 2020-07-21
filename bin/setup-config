@@ -4,10 +4,10 @@ console.log(process.pwd)
 
 const fs = require('fs');
 
-const configPath = `${__dirname}/../.clasp.json`;
-const claspJson = require(configPath);
-const claspJsonOverride = require(`${configPath}.override.json`);
+const configName = `${__dirname}/../.clasp`;
+const claspJson = require(`${configName}.json`);
+const claspJsonOverride = require(`${configName}.override.json`);
 
 const merged = Object.assign(claspJson, claspJsonOverride);
 
-fs.writeFileSync(configPath, JSON.stringify(merged));
+fs.writeFileSync(`${configName}.json`, JSON.stringify(merged));
