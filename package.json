@@ -1,5 +1,6 @@
 {
   "name": "FirebaseAuthenticationGoogleAppsScript",
+  "private": true,
   "version": "0.1.0",
   "description": "Firebase Authentication for Google Apps Scripts",
   "main": "index.js",
