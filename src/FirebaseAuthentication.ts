@@ -1,6 +1,7 @@
 type User = {
   localId: string;
   email?: string;
+  phoneNumber?: string;
 };
 
 export class FirebaseAuthentication {
@@ -19,6 +20,18 @@ export class FirebaseAuthentication {
   public getUserByEmail(email: string): User | null {
     const response = this.requestWithAuth('/accounts:lookup', 'post', {
       email: [email],
+    });
+
+    if (!response.users || response.users.length === 0) {
+      return null;
+    } else {
+      return response.users[0];
+    }
+  }
+
+  public getUserByPhoneNumber(phoneNumber: string): User | null {
+    const response = this.requestWithAuth('/accounts:lookup', 'post', {
+      phoneNumber: [phoneNumber],
     });
 
     if (!response.users || response.users.length === 0) {

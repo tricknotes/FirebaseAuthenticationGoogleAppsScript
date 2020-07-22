@@ -14,13 +14,14 @@ export class Test extends TestRunner {
     this.auth.deleteUsers(users.map(({ localId }) => localId), true);
   }
 
-  ['It creates uesr by email']() {
+  ['It creates user by email']() {
     const user = this.auth.createUser({
       email: 'hoge@example.com'
     });
 
     GSUnit.assertEquals(user.email, 'hoge@example.com');
     GSUnit.assertNotNull(user.localId);
+    GSUnit.assertEquals(this.auth.getUserByEmail('hoge@example.com')!.localId, user.localId);
   }
 
   ['It updates user email']() {
@@ -31,6 +32,18 @@ export class Test extends TestRunner {
 
     GSUnit.assertEquals(updatedUser.email, 'hoi@example.com');
     GSUnit.assertEquals(this.auth.getUsers().length, 1);
+  }
+
+  ['It updates user phone number']() {
+    const user = this.auth.createUser({
+      email: 'hoge@example.com'
+    });
+    user.phoneNumber = '+81-080-0000-0000';
+    this.auth.updateUser(user);
+
+    GSUnit.assertEquals(user.phoneNumber, '+81-080-0000-0000');
+    GSUnit.assertNotNull(user.localId);
+    GSUnit.assertEquals(this.auth.getUserByPhoneNumber('+81-080-0000-0000')!.localId, user.localId);
   }
 
   ['It creates users in batch']() {
