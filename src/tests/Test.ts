@@ -24,6 +24,14 @@ export class Test extends TestRunner {
     GSUnit.assertEquals(this.auth.getUserByEmail('hoge@example.com')!.localId, user.localId);
   }
 
+  ['It gets user by id']() {
+    const user = this.auth.createUser({});
+
+    GSUnit.assertNotNull(user.localId);
+    GSUnit.assertEquals(this.auth.getUserByUid(user.localId)!.localId, user.localId);
+    GSUnit.assertEquals(this.auth.getUserByLocalId(user.localId)!.localId, user.localId);
+  }
+
   ['It updates user email']() {
     const user = this.auth.createUser({});
 
