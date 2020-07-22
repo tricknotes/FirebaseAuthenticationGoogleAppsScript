@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-console.log(process.pwd)
-
 const fs = require('fs');
 
 const configName = `${__dirname}/../.clasp`;
