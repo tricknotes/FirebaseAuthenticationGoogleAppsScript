@@ -1,5 +1,5 @@
 {
-  "name": "FirebaseAuthenticationGoogleAppsScript",
+  "name": "firebase-authentication-google-apps-script",
   "version": "1.0.0",
   "description": "Firebase Authentication for Google Apps Scripts",
   "main": "dist/FirebaseAuthentication.js",

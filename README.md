@@ -83,7 +83,7 @@ $ yarn install --dev FirebaseAuthenticationGoogleAppsScript
 Then, add the following `import` sentence into your module.
 
 ``` ts
-import { FirebaseAuthentication } from 'FirebaseAuthenticationGoogleAppsScript';
+import { FirebaseAuthentication } from 'firebase-authentication-google-apps-script';
 
 const auth = FirebaseAuthentication.getAuth(email, key, projectId);
 ```
