@@ -1,29 +1,6 @@
-type ProviderUserInfo = {
-  providerId: string;
-  rawId: string;
-  phoneNumber: string;
-};
+import { User, UserWithEmail, UserWithPhoneNumber } from './@types';
 
-export type User = {
-  localId: string;
-  createdAt: string;
-  validSince: string;
-  disabled: boolean;
-  email?: string;
-  emailVerified?: boolean;
-  phoneNumber?: string;
-  providerUserInfo?: ProviderUserInfo[];
-};
-
-export type UserWithEmail = User & {
-  email: string;
-  emailVerified: boolean;
-}
-
-export type UserWithPhoneNumber = User & {
-  phoneNumber: string;
-  providerUserInfo: ProviderUserInfo[];
-}
+export * from './@types';
 
 export class FirebaseAuthentication {
   private _accessToken: string;
@@ -192,6 +169,6 @@ export class FirebaseAuthentication {
   }
 }
 
-export function getAuth (email: string, key: string, projectId: string) {
+export function getAuth(email: string, key: string, projectId: string) {
   return FirebaseAuthentication.getAuth(email, key, projectId);
 }
