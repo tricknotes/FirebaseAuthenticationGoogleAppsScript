@@ -22,11 +22,7 @@ export class FirebaseAuthentication {
       localId: [uid],
     });
 
-    if (!response.users || response.users.length === 0) {
-      return null;
-    } else {
-      return response.users[0];
-    }
+    return this.pickUser(response.users);
   }
 
   public getUserByLocalId(localId: string): User | null {
@@ -39,11 +35,7 @@ export class FirebaseAuthentication {
       email: [email],
     });
 
-    if (!response.users || response.users.length === 0) {
-      return null;
-    } else {
-      return response.users[0];
-    }
+    return this.pickUser(response.users);
   }
 
   public getUserByPhoneNumber(phoneNumber: string): User | null {
@@ -51,11 +43,7 @@ export class FirebaseAuthentication {
       phoneNumber: [phoneNumber],
     });
 
-    if (!response.users || response.users.length === 0) {
-      return null;
-    } else {
-      return response.users[0];
-    }
+    return this.pickUser(response.users);
   }
 
   public getUsers(maxResults: number = 1000): User[] {
@@ -86,6 +74,14 @@ export class FirebaseAuthentication {
     }
 
     return this.requestWithAuth('/accounts:batchDelete', 'post', { localIds, force });
+  }
+
+  private pickUser(users: User[]): User | null {
+    if (!users || users.length === 0) {
+      return null;
+    } else {
+      return users[0];
+    }
   }
 
   private requestWithAuth(path: string, method: GoogleAppsScript.URL_Fetch.HttpMethod, data?: object) {
