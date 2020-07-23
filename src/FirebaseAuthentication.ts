@@ -1,8 +1,6 @@
-type User = {
-  localId: string;
-  email?: string;
-  phoneNumber?: string;
-};
+import { User, UserWithEmail, UserWithPhoneNumber } from './@types';
+
+export * from './@types';
 
 export class FirebaseAuthentication {
   private _accessToken: string;
@@ -22,7 +20,7 @@ export class FirebaseAuthentication {
       localId: [uid],
     });
 
-    return this.pickUser(response.users);
+    return this.pickUser<User>(response.users);
   }
 
   public getUserByLocalId(localId: string): User | null {
@@ -30,20 +28,22 @@ export class FirebaseAuthentication {
     return this.getUserByUid(localId);
   }
 
-  public getUserByEmail(email: string): User | null {
+  public getUserByEmail(email: string): UserWithEmail | null {
     const response = this.requestWithAuth('/accounts:lookup', 'post', {
       email: [email],
     });
 
-    return this.pickUser(response.users);
+    return this.pickUser<UserWithEmail>(response.users);
   }
 
-  public getUserByPhoneNumber(phoneNumber: string): User | null {
+  public getUserByPhoneNumber(phoneNumber: string): UserWithPhoneNumber | null {
     const response = this.requestWithAuth('/accounts:lookup', 'post', {
       phoneNumber: [phoneNumber],
     });
 
-    return this.pickUser(response.users);
+    console.log(response.users[0].providerUserInfo);
+
+    return this.pickUser<UserWithPhoneNumber>(response.users);
   }
 
   public getUsers(maxResults: number = 1000): User[] {
@@ -76,11 +76,11 @@ export class FirebaseAuthentication {
     return this.requestWithAuth('/accounts:batchDelete', 'post', { localIds, force });
   }
 
-  private pickUser(users: User[]): User | null {
+  private pickUser<T>(users: User[]): T | null {
     if (!users || users.length === 0) {
       return null;
     } else {
-      return users[0];
+      return (users[0] as unknown) as T;
     }
   }
 
@@ -169,6 +169,6 @@ export class FirebaseAuthentication {
   }
 }
 
-export function getAuth (email: string, key: string, projectId: string) {
+export function getAuth(email: string, key: string, projectId: string) {
   return FirebaseAuthentication.getAuth(email, key, projectId);
 }
