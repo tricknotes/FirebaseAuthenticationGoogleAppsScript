@@ -71,6 +71,23 @@ auth.deleteUser(localId);
 auth.deleteUsers([localId], true);
 ```
 
+## For TypeScript Users
+
+Please install `FirebaseAuthenticationGoogleAppsScript` as a node module to import type declaration.
+
+``` sh
+$ yarn install --dev FirebaseAuthenticationGoogleAppsScript
+# Or, $ npm install --save-dev FirebaseAuthenticationGoogleAppsScript
+```
+
+Then, add the following `import` sentence into your module.
+
+``` ts
+import { FirebaseAuthentication } from 'FirebaseAuthenticationGoogleAppsScript';
+
+const auth = FirebaseAuthentication.getAuth(email, key, projectId);
+```
+
 ## Development
 ### Setup
 

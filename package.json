@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.1.0",
   "description": "Firebase Authentication for Google Apps Scripts",
-  "main": "src/FirebaseAuthentication.ts",
+  "main": "dist/FirebaseAuthentication.js",
+  "types": "src/FirebaseAuthentication.ts",
   "repository": "https://github.com/tricknotes/FirebaseAuthenticationGoogleAppsScript",
   "author": "Ryunosuke Sato <tricknotes.rs@gmail.com>",
   "license": "MIT",
@@ -11,7 +12,8 @@
     "setup": "npx clasp create --type standalone --rootDir src",
     "deploy": "bin/setup-config && npx clasp push --force",
     "deploy:production": "cp .claspignore.production .claspignore && npx clasp push --force && git checkout .claspignore",
-    "test": "npx clasp run test 2>&1 | bin/parse-clasp-run-status"
+    "test": "npx clasp run test 2>&1 | bin/parse-clasp-run-status",
+    "prepublishOnly": "tsc"
   },
   "devDependencies": {
     "@google/clasp": "^2.3.0",
