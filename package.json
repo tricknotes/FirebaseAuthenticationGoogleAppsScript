@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "description": "Firebase Authentication for Google Apps Scripts",
   "main": "dist/FirebaseAuthentication.js",
+  "types": "src/FirebaseAuthentication.ts",
   "repository": "https://github.com/tricknotes/FirebaseAuthenticationGoogleAppsScript",
   "author": "Ryunosuke Sato <tricknotes.rs@gmail.com>",
   "license": "MIT",
