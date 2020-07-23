@@ -24,6 +24,9 @@ jobs:
       - name: Deploy to GAS (test environment)
         run: |
           yarn run deploy
+      - name: Compile TypeScript
+        run: |
+          yarn run tsc
       - name: Run test
         run: |
           yarn run test
