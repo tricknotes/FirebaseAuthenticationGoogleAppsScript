@@ -8,7 +8,8 @@
     "outDir": "./dist",
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "types": ["google-apps-script"]
+    "types": ["google-apps-script"],
+    "lib": ["esnext" ]
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]
