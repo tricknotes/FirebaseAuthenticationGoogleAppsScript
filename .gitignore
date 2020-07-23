@@ -2,4 +2,5 @@
 /yarn.lock
 /.clasprc.json
 /.clasp.json
+/dist
 *.code-workspace
