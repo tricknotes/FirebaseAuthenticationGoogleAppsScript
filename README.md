@@ -34,11 +34,16 @@ const projectId = 'projectname-12345'
 const auth = FirebaseAuthentication.getAuth(email, key, projectId);
 ```
 
-### Listing User
+### Find User
 
 ``` js
-auth.getUserByEmail(email);
+// Lint users
 auth.getUsers();
+
+// Get an user
+auth.getUserByEmail(email);
+auth.getUserByPhoneNumber(phoneNumber);
+auth.getUserByUid(uid);
 ```
 
 ### Creating User
