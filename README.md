@@ -37,7 +37,7 @@ const auth = FirebaseAuthentication.getAuth(email, key, projectId);
 ### Find User
 
 ``` js
-// Lint users
+// List users
 auth.getUsers();
 
 // Get an user
